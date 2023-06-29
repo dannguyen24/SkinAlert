@@ -15,69 +15,91 @@ struct mainpage: View {
     @State private var output = ""
     //hello
     
+    
     var body: some View {
-     
-        ZStack {
-            Color("pastelPink")
-                .ignoresSafeArea()
-            
+        
+        
+        NavigationStack {
             
             VStack {
+                Text("")
+            }
+            .toolbar {
+                NavigationLink(destination: SkinType()) {
+                    Text("[Sunscreens recommendation]")
+                        .font(.custom("Times New Roman", size: 30))
+                        .foregroundColor(Color("pastelPurple"))
+                    }
+                }
                 
-                Text("Is your ingredient harmful?")
-                    .font(.custom("Times New Roman", size: 40))
+                
+                
+                
+                
+                ZStack {
+                    Color("pastelPink")
+                        .ignoresSafeArea()
                     
-              
-
-                TextField("Input Ingredients Here!", text: $input)
-                    .multilineTextAlignment(.center)
-                        .font(.custom("Times New Roman", size: 35))
-                        .border(Color.gray, width: 0.5)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    VStack {
+                        
+                        Text("Is your ingredient harmful?")
+                            .font(.custom("Times New Roman", size: 40))
+                            .foregroundColor(Color(.systemPurple))
+                        
+                        
+                        
+                        TextField("Input Ingredients Here!", text: $input)
+                            .multilineTextAlignment(.center)
+                            .font(.custom("Times New Roman", size: 35))
+                            .border(Color.gray, width: 0.5)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .fixedSize(horizontal: true, vertical: false)
                             .frame(width: 120)
-                            
-                            
-            Spacer()
-                    .frame(height: 35)
-                
-                
-                Button("Check") {
-                    for variable in harmfulIngredients {
-                        if variable == input {
-                            output = "This ingredient is potentially irrating/harmful to your skin."
-                        } else {
-                            output = "This ingredient should be okay!"
-                        }
                         
+                        
+                        Spacer()
+                            .frame(height: 35)
+                        
+                        
+                        Button("Check") {
+                            for variable in harmfulIngredients {
+                                if variable == input {
+                                    output = "This ingredient is potentially irrating/harmful to your skin."
+                                } else {
+                                    output = "This ingredient should be okay!"
+                                }
+                                
+                                
+                            }
                             
+                        }
+                        .font(.custom("Times New Roman", size: 30))
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color("pastelPurple"))
+                        
+                        Text(output)
                     }
-                   
+                    
+                    
+                    
+                    
+                    
+                    // yipeeeee
+                    
                 }
-                .font(.custom("Times New Roman", size: 30))
-                .buttonStyle(.borderedProminent)
-                .tint(Color("pastelPurple"))
                 
-                Text(output)
+                
+                
+                
+                
             }
-
-            
-            
-            
-            
-           // yipeeeee
-            
         }
         
-        
-        
-       
-        
+        struct mainpage_Previews: PreviewProvider {
+            static var previews: some View {
+                mainpage()
+            }
+        }
     }
-}
 
-struct mainpage_Previews: PreviewProvider {
-    static var previews: some View {
-        mainpage()
-    }
-}
