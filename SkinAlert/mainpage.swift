@@ -25,16 +25,16 @@ struct mainpage: View {
                 Text("")
             }
             .toolbar {
-                NavigationLink(destination: SkinType()) {
-                    Text("[Sunscreens recommendation]")
-                        .font(.custom("Times New Roman", size: 30))
-                        .foregroundColor(Color("pastelPurple"))
-                    }
+                HStack(alignment: .top) {
+                    NavigationLink(destination: SkinType()) {
+                        Text("Sunscreens recommendation")
+                            .font(.custom("Times New Roman", size: 20))
+                            .foregroundColor(Color(hue: 0.788, saturation: 0.95, brightness: 0.725))
+                        }
+
                 }
-                
-                
-                
-                
+               
+                }
                 
                 ZStack {
                     Color("pastelPink")
